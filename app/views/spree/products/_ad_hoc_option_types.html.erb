@@ -1,5 +1,5 @@
 <% if !!@product.ad_hoc_option_types && @product.ad_hoc_option_types.present? %>
-  <% lookup = ActionView::LookupContext.new(ActionController::Base.view_paths, {formats: [:html]}) %>
+  <% lookup = ActionView::LookupContext.new(ActionController::Base.view_paths, { formats: [:html] }) %>
 
   <div id="ad_hoc_options">
     <div class='col-sm-12'>

@@ -6,7 +6,6 @@ module Spree
       base.before_action :set_option_params_values, only: [:populate]
     end
 
-
     private
 
     def set_option_params_values
@@ -19,4 +18,4 @@ module Spree
   end
 end
 
-Spree::OrdersController.prepend Spree::OrdersControllerDecorator
+::Spree::OrdersController.prepend Spree::OrdersControllerDecorator

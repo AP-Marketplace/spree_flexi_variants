@@ -8,4 +8,4 @@ module SpreeFlexiVariants
   end
 end
 
-Spree::OptionType.prepend SpreeFlexiVariants::Spree::OptionTypeDecorator
+::Spree::OptionType.prepend SpreeFlexiVariants::Spree::OptionTypeDecorator

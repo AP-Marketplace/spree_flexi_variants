@@ -1,7 +1,6 @@
 module SpreeFlexiVariants
   module Spree
     module LineItemDecorator
-
       def self.prepended(base)
         base.has_many :ad_hoc_option_values_line_items, dependent: :destroy
         base.has_many :ad_hoc_option_values, through: :ad_hoc_option_values_line_items
@@ -48,4 +47,4 @@ module SpreeFlexiVariants
   end
 end
 
-Spree::LineItem.prepend SpreeFlexiVariants::Spree::LineItemDecorator
+::Spree::LineItem.prepend SpreeFlexiVariants::Spree::LineItemDecorator

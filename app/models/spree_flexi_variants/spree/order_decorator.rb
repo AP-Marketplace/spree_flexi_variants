@@ -132,4 +132,4 @@ module SpreeFlexiVariants
   end
 end
 
-Spree::Order.prepend SpreeFlexiVariants::Spree::OrderDecorator
+::Spree::Order.prepend SpreeFlexiVariants::Spree::OrderDecorator

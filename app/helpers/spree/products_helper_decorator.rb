@@ -1,6 +1,5 @@
 module Spree
   module ProductsHelperDecorator
-
     require 'json'
 
     # help w/ formatting the validation string
@@ -16,7 +15,6 @@ module Spree
     private
 
     def validation_attributes(option)
-
       return unless option.data_validation
 
       validation_hash=Hash.new
@@ -93,4 +91,4 @@ module Spree
   end
 end
 
-Spree::ProductsHelper.prepend Spree::ProductsHelperDecorator
+::Spree::ProductsHelper.prepend Spree::ProductsHelperDecorator

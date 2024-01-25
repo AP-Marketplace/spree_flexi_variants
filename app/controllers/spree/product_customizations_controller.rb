@@ -13,6 +13,5 @@ module Spree
         format.js {render text: "#{c.map(&:price).sum}" }
       end
     end
-
   end
 end
