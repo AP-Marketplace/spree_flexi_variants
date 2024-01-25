@@ -1,3 +1,7 @@
-Spree::ShipmentMailer.class_eval do
-  helper Spree::BaseHelper
+module Spree::ShipmentMailerDecorator
+  def self.prepended(base)
+    base.helper Spree::BaseHelper
+  end
 end
+
+Spree::OrderMailer.prepend ::Spree::ShipmentMailerDecorator

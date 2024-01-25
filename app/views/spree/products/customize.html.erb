@@ -3,11 +3,11 @@
 
 <div id="product-images" data-hook="product_images">
   <div id="main-image">
-    <%= render 'image' %>
+    <%= render partial: 'gallery' %>
   </div>
 </div>
 
 <div id="cart-form" data-hook="cart_form">
-  <%= render 'cart_form' %>
-</div>
+    <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>
+  </div>
 

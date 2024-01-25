@@ -1,5 +1,5 @@
 module Spree
-  ProductsHelper.module_eval do
+  module ProductsHelperDecorator
 
     require 'json'
 
@@ -92,3 +92,5 @@ module Spree
     end
   end
 end
+
+Spree::ProductsHelper.prepend Spree::ProductsHelperDecorator

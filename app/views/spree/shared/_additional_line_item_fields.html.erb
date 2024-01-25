@@ -1,6 +1,7 @@
 <div class='customizations'>
   <%# TODO: group multi-select options (e.g. toppings) %>
   <ul class='list-group list-unstyled'>
+  <%debugger%>
     <% item.ad_hoc_option_values.each do |ad_hoc_option_value| %>
       <li><b><%= ad_hoc_option_value.option_value.option_type.presentation %>:</b> <%= ad_hoc_option_value.option_value.presentation %></li>
     <% end %>

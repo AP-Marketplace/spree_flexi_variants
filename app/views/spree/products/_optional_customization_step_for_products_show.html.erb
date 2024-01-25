@@ -12,7 +12,7 @@
   <% end %>
 <% else %>
   <div id="cart-form" data-hook="cart_form">
-    <%= render partial: 'cart_form' %>
+    <%= render 'cart_form', variant_change_identifier: 'productCarousel' %>
   </div>
 <% end %>
 

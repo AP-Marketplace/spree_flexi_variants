@@ -4,6 +4,7 @@ module Spree
     before_action :load_calculators, only: [:new, :edit]
 
     def load_calculators
+      debugger
       @calculators = ProductCustomizationType.calculators.sort_by(&:name)
     end
 

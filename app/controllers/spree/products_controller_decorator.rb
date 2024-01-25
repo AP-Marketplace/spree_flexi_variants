@@ -1,5 +1,5 @@
 module Spree
-  ProductsController.class_eval do
+  module ProductsControllerDecorator
     def customize
       # copied verbatim from 0.60 ProductsController#show, except that I changed id to product_id on following line
       # TODO: is there another way?  e.g. render action: "show", template: "customize" ?
@@ -13,11 +13,13 @@ module Spree
       # FIXTHIS
       # possible new if we can't get it to use the show
       @product = Product.friendly.find(params[:product_id])
+      @product_price = @product.price_in(current_currency).amount
       return unless @product
 
       @variants = Variant.active.includes([:option_values, :images]).where(product_id: @product.id)
       @product_properties = ProductProperty.includes(:property).where(product_id: @product.id)
       @selected_variant = @variants.detect { |v| v.available? }
+      @product_images = product_images(@product, @variants)
 
       referer = request.env['HTTP_REFERER']
 
@@ -31,3 +33,4 @@ module Spree
     end
   end
 end
+Spree::ProductsController.prepend Spree::ProductsControllerDecorator
