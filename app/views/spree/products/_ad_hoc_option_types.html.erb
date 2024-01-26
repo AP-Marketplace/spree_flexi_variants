@@ -22,7 +22,7 @@
 
         <% if lookup.exists?(partial_name, nil, true) %>
           <div class='col-sm-<%= Spree.t(:variant_col_size) %>'>
-          <%= render partial: partial_name, locals: {option_type: ad_hoc_option_type, class_str: class_str} %>
+          <%= render partial: partial_name, locals: { option_type: ad_hoc_option_type, class_str: class_str } %>
           </div>
         <% else %>
           <li>

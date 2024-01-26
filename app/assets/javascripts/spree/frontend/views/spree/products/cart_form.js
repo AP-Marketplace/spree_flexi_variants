@@ -283,7 +283,7 @@ Spree.ready(function($) {
   var options = {};
 
   // Get all input elements with names starting with 'options'
-  $('input[name^="options"]').each(function() {
+  $('input[name^="options"], select[name^="options"]').each(function() {
       var name = $(this).attr('name');
       var value = $(this).val();
 
