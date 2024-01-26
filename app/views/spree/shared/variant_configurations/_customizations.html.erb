@@ -10,7 +10,7 @@
     <%# for finding optional partials %>
     <% product.product_customization_types.each do |product_customization_type| %>
 
-      <% param_prefix = "product_customizations[#{product_customization_type.id}]" %>
+      <% param_prefix = "options[product_customizations][#{product_customization_type.id}]" %>
 
       <%# render a custom partial based on the customization name? %>
 
@@ -19,7 +19,7 @@
         <%= render partial: partial_name, locals: {product_customization_type: product_customization_type, param_prefix: param_prefix} %>
       <% else %>
 
-        <% param_prefix = "product_customizations[#{product_customization_type.id}]" %>
+        <% param_prefix = "options[product_customizations][#{product_customization_type.id}]" %>
 
         <%= field_set_tag product_customization_type.presentation do %>
 
@@ -27,7 +27,7 @@
             <p><%=  product_customization_type.description %></p>
           <% end %>
 
-          <% param_prefix = "product_customizations[#{product_customization_type.id}]" %>
+          <% param_prefix = "options[product_customizations][#{product_customization_type.id}]" %>
           <ol style="list-style: none;">
             <% product_customization_type.customizable_product_options.each do |option| %>
 

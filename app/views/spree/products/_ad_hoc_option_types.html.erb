@@ -32,7 +32,7 @@
             <div class="col-md-<%= Spree.t(:variant_col_size) %> form-group">
               <h5 class='presentation-for-ad-hoc-option-value'><%= option_type.presentation %>: </h5>
               <div class='form-for-ad-hoc-option-value'>
-                <%= select_tag "ad_hoc_option_values[#{ad_hoc_option_type.id}]",options_for_select(ad_hoc_option_value_options(ad_hoc_option_type.option_values), selected_option_value.present? ? selected_option_value.id.to_s : nil), select_opts %>
+                <%= select_tag "options[ad_hoc_option_values][#{ad_hoc_option_type.id}]",options_for_select(ad_hoc_option_value_options(ad_hoc_option_type.option_values), selected_option_value.present? ? selected_option_value.id.to_s : nil), select_opts %>
               </div>
             </div>
           </li>

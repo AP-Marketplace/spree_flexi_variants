@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 3.1.0'
+  spree_opts = '4.6.0'
 
   s.add_dependency('carrierwave')
   s.add_dependency('mini_magick')
-  s.add_dependency 'spree', spree_version
+  s.add_dependency 'spree', spree_opts
 
   s.add_development_dependency 'capybara',           '~> 2.1'
   s.add_development_dependency 'coffee-rails'
@@ -39,7 +39,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'better_errors'
   s.add_development_dependency 'binding_of_caller'
   s.add_development_dependency 'xray-rails'
-  s.add_development_dependency 'quiet_assets'
   s.add_development_dependency 'jazz_fingers'
 
 end

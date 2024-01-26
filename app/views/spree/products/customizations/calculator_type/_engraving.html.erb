@@ -30,7 +30,7 @@
   <div class="form-for-customizable-product-option engraving">
     <p><%= product_customization_type.description  %></p>
     <h5><%= option.presentation %></h5>
-    <%= text_field_tag "#{param_prefix}[#{product_customization_type.customizable_product_options.first.id}]", "", id: cust_dom_id, class: "customization form-control", placeholder: option.description %>
+    <%= text_field_tag "options[#{param_prefix}][#{product_customization_type.customizable_product_options.first.id}]", "", id: cust_dom_id, class: "customization form-control", placeholder: option.description %>
     <%# the price is stored here on change, and later collected by the product-wide updatePrice() %>
     <%= hidden_field_tag "customization_price", "0", class: "customization_price" %>
   </div>
