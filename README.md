@@ -1,9 +1,8 @@
 # SpreeFlexiVariants
 
-Master branch for Spree 3.3.0+ Read version notes for details.
-
 This is a [spree](http://spreecommerce.com) extension that solves two use cases related to variants. I call them **Ad Hoc Options** and **Product Customizations**.
 
+This extension is upgraded version of [old spree_flexi_variants](https://github.com/QuintinAdam/spree_flexi_variants)
 ### Ad Hoc Options
 
 Use these when have numerous (possibly price-altering) product options and you don't want to create variants for each combination.
@@ -16,21 +15,14 @@ Use these when you want the ability to provide a highly customized product e.g. 
 
 ## Version Notes
 
-The branch spree-3-3 version for spree 3.3.0
-
-The branch spree-3-2 version for spree 3.2.0
-
-The branch spree-3-1-stable version for spree 3.1.0
-
-The branch spree-3-0-stable is an somewhat stable version for spree 3.0.0 with updated styles to match.
-
-Working with a older spree? Check out the original gem or one of the many forks. https://github.com/jsqu99/spree_flexi_variants
+The branch 4-6-stable version for spree >=4.6.0
 
 ## Installation
 
 ### See the notes in Versionfile if you are using an older version of spree
 
-`gem 'spree_flexi_variants', github: 'QuintinAdam/spree_flexi_variants', branch: 'spree-3-3'`
+
+`gem 'spree_flexi_variants', github: 'rahul2103/spree_flexi_variants', branch: '4-6-stable'`
 
 `bundle install`
 
@@ -40,14 +32,13 @@ Working with a older spree? Check out the original gem or one of the many forks.
 
 Build a 'Cake' product using **Ad Hoc Options** and **Product Customizations**
 
-![Cake](https://raw.github.com/QuintinAdam/spree_flexi_variants/master/doc/custom_cake.png)
 
-Build a 'Necklace'  product using **Ad Hoc Options** and **Product Customizations**
+https://github.com/rahul2103/spree_flexi_variants/assets/81744029/6e4d89de-e677-4867-95eb-d58f15b36ba5
 
-![Necklace](https://raw.github.com/jsqu99/spree_flexi_variants/master/doc/necklace_screenshot.png)
+## Contributing
 
-Build a 'Pizza' product using **Ad Hoc Options**. Note that the 'multi' option checkboxes come from a partial named after the option name (see app/views/products/ad_hoc_options/_toppings.html.erb)
+If you'd like to contribute, please take a look at the
+[instructions](CONTRIBUTING.md) for installing dependencies and crafting a good
+pull request.
 
-![Picture Frame](https://raw.github.com/jsqu99/spree_flexi_variants/master/doc/pizza_screenshot.png)
-
-See the [wiki](https://github.com/jsqu99/spree_flexi_variants/wiki) for more detail.
+Copyright (c) 2024 spree_flexi_variants, released under the New BSD License
