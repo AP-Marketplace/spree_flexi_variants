@@ -1,7 +1,6 @@
 module SpreeFlexiVariants
   module Spree
     module ProductDecorator
-
       def self.prepended(base)
         # These are the pool of POSSIBLE option values
         base.has_many :ad_hoc_option_types
@@ -28,4 +27,4 @@ module SpreeFlexiVariants
   end
 end
 
-Spree::Product.prepend SpreeFlexiVariants::Spree::ProductDecorator
+::Spree::Product.prepend SpreeFlexiVariants::Spree::ProductDecorator

@@ -1,5 +1,5 @@
 module Spree
-  class AdHocOptionType < ActiveRecord::Base
+  class AdHocOptionType < Spree::Base
     belongs_to :option_type
     belongs_to :product
     before_save :attach_option_values
@@ -36,6 +36,5 @@ module Spree
         self.ad_hoc_option_values << ahot
       end
     end
-
   end
 end

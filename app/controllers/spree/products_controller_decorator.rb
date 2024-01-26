@@ -33,4 +33,5 @@ module Spree
     end
   end
 end
-Spree::ProductsController.prepend Spree::ProductsControllerDecorator
+
+::Spree::ProductsController.prepend Spree::ProductsControllerDecorator

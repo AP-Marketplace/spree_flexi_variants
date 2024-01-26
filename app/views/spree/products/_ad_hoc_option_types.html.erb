@@ -1,5 +1,5 @@
 <% if !!@product.ad_hoc_option_types && @product.ad_hoc_option_types.present? %>
-  <% lookup = ActionView::LookupContext.new(ActionController::Base.view_paths, {formats: [:html]}) %>
+  <% lookup = ActionView::LookupContext.new(ActionController::Base.view_paths, { formats: [:html] }) %>
 
   <div id="ad_hoc_options">
     <div class='col-sm-12'>
@@ -22,7 +22,7 @@
 
         <% if lookup.exists?(partial_name, nil, true) %>
           <div class='col-sm-<%= Spree.t(:variant_col_size) %>'>
-          <%= render partial: partial_name, locals: {option_type: ad_hoc_option_type, class_str: class_str} %>
+          <%= render partial: partial_name, locals: { option_type: ad_hoc_option_type, class_str: class_str } %>
           </div>
         <% else %>
           <li>
@@ -32,7 +32,7 @@
             <div class="col-md-<%= Spree.t(:variant_col_size) %> form-group">
               <h5 class='presentation-for-ad-hoc-option-value'><%= option_type.presentation %>: </h5>
               <div class='form-for-ad-hoc-option-value'>
-                <%= select_tag "ad_hoc_option_values[#{ad_hoc_option_type.id}]",options_for_select(ad_hoc_option_value_options(ad_hoc_option_type.option_values), selected_option_value.present? ? selected_option_value.id.to_s : nil), select_opts %>
+                <%= select_tag "options[ad_hoc_option_values][#{ad_hoc_option_type.id}]",options_for_select(ad_hoc_option_value_options(ad_hoc_option_type.option_values), selected_option_value.present? ? selected_option_value.id.to_s : nil), select_opts %>
               </div>
             </div>
           </li>
