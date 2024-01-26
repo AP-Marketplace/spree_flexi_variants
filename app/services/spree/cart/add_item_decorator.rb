@@ -3,7 +3,6 @@ module Spree
     module AddItemDecorator
       
       private
-      #this whole thing needs a refactor!
 
       def add_to_line_item(order:, variant:, quantity: nil, public_metadata: {}, private_metadata: {}, options: {})
         options ||= {}
@@ -29,30 +28,20 @@ module Spree
 
         return failure(line_item) unless line_item.save
 
-        update_flexi_variants(line_item, options, order)
+        update_flexi_variants(line_item, options, order, variant)
 
-        line_item.reload.update_price
+        line_item.reload.update(price: line_item.reload.update_price)
 
         ::Spree::TaxRate.adjust(order, [line_item]) if line_item_created
         success(order: order, line_item: line_item, line_item_created: line_item_created, options: options)
       end
 
-      def update_flexi_variants(line_item, options, order)
+      def update_flexi_variants(line_item, options, order, variant)
         product_customizations_values = options[:product_customizations] || {}
         update_product_customizations(product_customizations_values, line_item) if product_customizations_values.present?
 
-        ad_hoc_option_value_ids = options[:ad_hoc_option_values] ? options[:ad_hoc_option_values].values. : []
-        update_ad_hoc_option_values(ad_hoc_option_value_ids, line_item) ad_hoc_option_value_ids.present?
-
-        #TODO: need to fix sum all offset price.
-        offset_price = product_option_values.map(&:price_modifier).compact.sum + product_customizations_values.map {|product_customization| product_customization.price(variant)}.compact.sum
-
-        if order.currency
-          line_item.currency = order.currency unless order.currency.nil?
-          line_item.price    = variant.price_in(order.currency).amount + offset_price
-        else
-          line_item.price    = variant.price + offset_price
-        end
+        ad_hoc_option_value_ids = options[:ad_hoc_option_values] ? options[:ad_hoc_option_values].values : []
+        update_ad_hoc_option_values(ad_hoc_option_value_ids, line_item) if ad_hoc_option_value_ids.present?
       end
 
       def update_ad_hoc_option_values(ad_hoc_option_value_ids, line_item)

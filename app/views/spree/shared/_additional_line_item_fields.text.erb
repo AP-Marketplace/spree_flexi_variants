@@ -17,6 +17,8 @@
          <% lookup=ActionView::LookupContext.new(ActionController::Base.view_paths, {formats: [:html]}) %>
          <% if lookup.exists?("spree/products/#{partial}",nil,true) %>
             <%= render partial: "spree/orders/custom_fields/#{partial}", locals: {option: option} %>
+
+            
          <% else %>
               <% if option.customization_image? %>
                 <%= option.customizable_product_option.presentation %>: <%= File.basename option.customization_image.thumb.url %>
