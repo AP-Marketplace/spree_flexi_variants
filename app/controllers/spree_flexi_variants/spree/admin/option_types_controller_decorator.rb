@@ -14,9 +14,9 @@ module SpreeFlexiVariants
 
         # AJAX method for selecting an existing option type and associating with the current product
         def select_ad_hoc
-          ad_hoc_option_type = AdHocOptionType.new()
+          ad_hoc_option_type = ::Spree::AdHocOptionType.new()
 
-          option_type = OptionType.find params[:id]
+          option_type = ::Spree::OptionType.find params[:id]
           ad_hoc_option_type.option_type = option_type
           ad_hoc_option_type.position = option_type.position
 
@@ -28,7 +28,7 @@ module SpreeFlexiVariants
         private
 
         def set_available_ad_hoc_option_types
-          @available_option_types = OptionType.all.to_a
+          @available_option_types = ::Spree::OptionType.all.to_a
           selected_option_types = []
           @product.ad_hoc_option_types.each do |option|
             selected_option_types << option.option_type
@@ -38,7 +38,7 @@ module SpreeFlexiVariants
 
         def load_product_decorator
           # load_product # fix in progress https://github.com/spree/spree/pull/6220
-          @product = Product.friendly.find(params[:product_id])
+          @product = ::Spree::Product.friendly.find(params[:product_id])
         end
       end
     end

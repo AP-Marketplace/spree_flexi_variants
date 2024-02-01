@@ -2,7 +2,7 @@ module Spree
   class AdHocOptionType < Spree::Base
     belongs_to :option_type
     belongs_to :product
-    before_save :attach_option_values
+    # before_save :attach_option_values
     has_many :ad_hoc_option_values, dependent: :destroy
     alias :option_values :ad_hoc_option_values
 
