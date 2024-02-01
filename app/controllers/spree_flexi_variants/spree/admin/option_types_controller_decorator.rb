@@ -3,7 +3,6 @@ module SpreeFlexiVariants
     module Admin
       module OptionTypesControllerDecorator
         def self.prepended(base)
-          # not sure if I have to repeat the 'before_action' for the original option_types account
           base.before_action :load_product_decorator, only: [:select_ad_hoc, :available_ad_hoc]
         end
 
@@ -12,13 +11,8 @@ module SpreeFlexiVariants
           render layout: false
         end
 
-        # AJAX method for selecting an existing option type and associating with the current product
         def select_ad_hoc
-          ad_hoc_option_type = ::Spree::AdHocOptionType.new()
-
-          option_type = ::Spree::OptionType.find params[:id]
-          ad_hoc_option_type.option_type = option_type
-          ad_hoc_option_type.position = option_type.position
+          ad_hoc_option_type = create_ad_hoc_option_type(params[:id])
 
           @product.ad_hoc_option_types << ad_hoc_option_type
 
@@ -29,16 +23,17 @@ module SpreeFlexiVariants
 
         def set_available_ad_hoc_option_types
           @available_option_types = ::Spree::OptionType.all.to_a
-          selected_option_types = []
-          @product.ad_hoc_option_types.each do |option|
-            selected_option_types << option.option_type
-          end
-          @available_option_types.delete_if {|ot| selected_option_types.include? ot}
+          selected_option_types = @product.ad_hoc_option_types.map(&:option_type)
+          @available_option_types -= selected_option_types
         end
 
         def load_product_decorator
-          # load_product # fix in progress https://github.com/spree/spree/pull/6220
           @product = ::Spree::Product.friendly.find(params[:product_id])
+        end
+
+        def create_ad_hoc_option_type(option_type_id)
+          option_type = ::Spree::OptionType.find(option_type_id)
+          ad_hoc_option_type = ::Spree::AdHocOptionType.new(option_type: option_type, position: option_type.position)
         end
       end
     end

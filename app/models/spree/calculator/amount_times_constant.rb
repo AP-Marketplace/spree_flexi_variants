@@ -33,6 +33,12 @@ module Spree
         0.0
       end
 
+      def calculate(value = nil)
+        value.to_i * preferred_multiplier
+      rescue
+        0.0
+      end
+
       def valid_configuration?(product_customization)
         true
       end

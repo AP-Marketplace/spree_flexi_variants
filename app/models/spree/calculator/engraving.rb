@@ -30,6 +30,12 @@ module Spree
       0.0
     end
 
+    def calculate(value = nil)
+      value.length * (preferred_price_per_letter || 0)
+    rescue
+      0.0
+    end
+
     def valid_configuration?(product_customization)
       true
     end

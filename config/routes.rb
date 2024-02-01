@@ -73,8 +73,14 @@ Spree::Core::Engine.add_routes do
           get :selected
         end
       end
-    end #products
-  end # namespace :admin
+    end
+  end
 
-  match 'admin/variant_configurations/:variant_id', to: 'admin/variant_configurations#configure', via: [:get, :post]
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v2 do
+      namespace :storefront do
+        get '/calculate/:calculator/:value', to: "flexi_calculator#calculate", as: :flexi_calculator_calculate
+      end
+    end
+  end
 end

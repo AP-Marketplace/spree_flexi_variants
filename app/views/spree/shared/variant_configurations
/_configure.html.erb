@@ -1,4 +1,4 @@
-  <% session_key = Rails.application.config.session_options[:key] %>
+<% session_key = Rails.application.config.session_options[:key] %>
 
 <%# I just need a form tag so I can call jquery.serialize %>
 <%= form_tag '/ignore', {id: 'variant_configurations', multipart: true} do %>

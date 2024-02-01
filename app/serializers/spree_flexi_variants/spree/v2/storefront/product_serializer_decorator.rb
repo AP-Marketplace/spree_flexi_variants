@@ -6,9 +6,12 @@ module SpreeFlexiVariants
           def self.prepended(base)
             base.has_many :ad_hoc_option_types,
                           serializer: ::Spree::V2::Storefront::AdHocOptionTypeSerializer
-      
+
             base.has_many :product_customization_types,
                           serializer: ::Spree::V2::Storefront::ProductCustomizationTypeSerializer
+
+            base.has_many :ad_hoc_variant_exclusions,
+                          serializer: ::Spree::V2::Storefront::AdHocVariantExclusionSerializer
           end 
         end
       end

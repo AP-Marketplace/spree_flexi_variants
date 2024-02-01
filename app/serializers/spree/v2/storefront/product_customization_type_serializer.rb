@@ -7,7 +7,7 @@ module Spree
         attributes :customizable_product_options
 
         attribute :calculator do |product_customization_type|
-          product_customization_type.calculator.class.name.demodulize.underscore rescue ""
+          product_customization_type.calculator.type rescue ""
         end
       end
     end

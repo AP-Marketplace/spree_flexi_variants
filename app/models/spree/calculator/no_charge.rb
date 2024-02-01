@@ -21,6 +21,10 @@ module Spree
       return 0
     end
 
+    def calculate(value = nil)
+      0.0
+    end
+
     def valid_configuration?(product_customization)
       true
     end

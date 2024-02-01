@@ -9,23 +9,9 @@ module Spree
       end
 
       def edit
-        @product_customization_type= ProductCustomizationType.find(params[:id])
+        @product_customization_type = find_product_customization_type(params[:id])
 
-        # Is this an edit immediately after create?  If so, need to create
-        # calculator-appropriate default options
-        if @product_customization_type.customizable_product_options.empty?
-          if !@product_customization_type.calculator.nil?
-
-            opts = @product_customization_type.calculator.create_options
-            @product_customization_type.customizable_product_options.concat opts if opts
-
-            # for each mandatory input type
-            #        @product_customization_type.calculator.required_fields.each_pair do |key, val|
-            #          cpo= CustomizableProductOption.create(name: key, presentation: key.titleize, is_required: true,data_type: val)
-            #          @product_customization_type.customizable_product_options << cpo
-            #        end
-          end
-        end
+        initialize_calculator_default_options if @product_customization_type.customizable_product_options.empty?
       end
 
       def available
@@ -44,11 +30,10 @@ module Spree
         redirect_to selected_admin_product_product_customization_types_url(@product)
       end
 
-      # AJAX method for selecting an existing option type and associating with the current product
       def select
-        @product = Product.friendly.find(params[:product_id])
+        @product = find_product(params[:product_id])
 
-        @product.product_customization_types << ProductCustomizationType.find(params[:id])
+        @product.product_customization_types << find_product_customization_type(params[:id])
         @product.save
         @product_customization_types = @product.product_customization_types
         set_available_product_customization_types
@@ -67,16 +52,28 @@ module Spree
       private
 
       def load_product
-        @product = Product.friendly.find(params[:product_id])
+        @product = find_product(params[:product_id])
+      end
+
+      def find_product_customization_type(id)
+        ProductCustomizationType.find(id)
+      end
+
+      def find_product(id)
+        Product.friendly.find(id)
+      end
+
+      def initialize_calculator_default_options
+        return unless @product_customization_type.calculator
+
+        options = @product_customization_type.calculator.create_options
+        @product_customization_type.customizable_product_options.concat(options) if options
       end
 
       def set_available_product_customization_types
         @available_product_customization_types = ProductCustomizationType.all.to_a
-        selected_product_customization_types = []
-        @product.product_customization_types.each do |pct|
-          selected_product_customization_types << pct
-        end
-        @available_product_customization_types.delete_if {|pct| selected_product_customization_types.include? pct}
+        selected_product_customization_types = @product.product_customization_types.to_a
+        @available_product_customization_types -= selected_product_customization_types
       end
     end
   end
