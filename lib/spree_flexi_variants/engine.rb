@@ -38,8 +38,8 @@ module SpreeFlexiVariants
       extended_calculators.product_customization_types += [
                                                                     Spree::Calculator::Engraving,
                                                                     Spree::Calculator::AmountTimesConstant,
-                                                                    Spree::Calculator::ProductArea,
-                                                                    Spree::Calculator::CustomizationImage,
+                                                                    # Spree::Calculator::ProductArea,
+                                                                    # Spree::Calculator::CustomizationImage,
                                                                     Spree::Calculator::NoCharge
                                                                    ]
       app.config.spree.calculators = extended_calculators
