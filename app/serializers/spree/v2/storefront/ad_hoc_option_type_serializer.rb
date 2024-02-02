@@ -4,8 +4,7 @@ module Spree
       class AdHocOptionTypeSerializer < BaseSerializer
         set_type :ad_hoc_option_type
 
-        attributes :option_type, :price_modifier_type, :is_required, :position, :ad_hoc_option_values
-
+        attributes :price_modifier_type, :is_required, :position, :option_type, :ad_hoc_option_values
       end
     end
   end

@@ -4,11 +4,11 @@ module Spree
       class ProductCustomizationTypeSerializer < BaseSerializer
         set_type :product_customization_type
 
-        attributes :customizable_product_options
-
         attribute :calculator do |product_customization_type|
           product_customization_type.calculator.type rescue ""
         end
+
+        attributes :customizable_product_options
       end
     end
   end
